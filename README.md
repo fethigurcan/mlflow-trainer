@@ -1,5 +1,5 @@
 # mlflow-trainer
-Derives from cuda-trainer and just uses entrypoint as "mlflow run" and sample kubernetes job containers
+Derives from cuda-trainer(https://github.com/fethigurcan/cuda-trainer) and just uses entrypoint as "mlflow run" and sample kubernetes job containers
 
 Usage (without GPU)
 ```bash
