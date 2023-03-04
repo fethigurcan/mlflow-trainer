@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: mlflow-example-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: mlflow-example-job
+        image: localrepo:32000/mlflow-trainer:latest
+        env:
+        - name: MLFLOW_TRACKING_URI
+          value: "http://mlflow.local/"
+        args:
+          - "https://github.com/mlflow/mlflow-example.git"
+          - "-P"
+          - "alpha=5.0"
+      restartPolicy: Never
+  backoffLimit: 4
