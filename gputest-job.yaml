@@ -1,17 +1,21 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: mlflow-gputest-job
+  name: mlflow-example-job
 spec:
   template:
     spec:
       containers:
-      - name: mlflow-gputest-job
+      - name: mlflow-example-job
         image: localrepo:32000/mlflow-trainer:latest
         env:
         - name: MLFLOW_TRACKING_URI
           value: "http://mlflow.local/"
         args:
           - "https://github.com/fethigurcan/yargitay-gputest.git"
+          - "-P"
+          - "accelerator=cpu"
+          - "-P"
+          - "devices=None"
       restartPolicy: Never
   backoffLimit: 4
